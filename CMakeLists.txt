@@ -5,6 +5,7 @@ set(DEVICE_NAME "mydevice" CACHE STRING "Will be used as the name for the final 
 # initialize pico-sdk from GIT
 # (note this can come from environment, CMake cache etc)
 set(PICO_SDK_FETCH_FROM_GIT on)
+set(PICO_SDK_PATH ${CMAKE_CURRENT_LIST_DIR}/libraries/pico-sdk)
 
 include(pico_sdk_import.cmake)
 

@@ -11,4 +11,4 @@ pico_enable_stdio_usb(${DEVICE_NAME} 1)
 pico_enable_stdio_uart(${DEVICE_NAME} 0)
 
 # create map/bin/hex file etc.
-pico_add_extra_outputs(${XIO_DEVICE_NAME})
+pico_add_extra_outputs(${DEVICE_NAME})
