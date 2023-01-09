@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-set(XIO_DEVICE_NAME "xiodevice" CACHE STRING "Will be used as the name for the final binary files")
+set(DEVICE_NAME "mydevice" CACHE STRING "Will be used as the name for the final binary files")
 
 # initialize pico-sdk from GIT
 # (note this can come from environment, CMake cache etc)
@@ -8,7 +8,7 @@ set(PICO_SDK_FETCH_FROM_GIT on)
 
 include(pico_sdk_import.cmake)
 
-project(${XIO_DEVICE_NAME} C CXX ASM)
+project(${DEVICE_NAME} C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
@@ -75,24 +75,15 @@ if(NOT DEFINED PORT_DIR)
 endif()
 add_subdirectory(${PORT_DIR})
 
-set(XIO_SDK_USE_PRINTF ON)
-set(XIO_SDK_USE_SPDLOG OFF)
-add_subdirectory(xio-hw-sdk)
-include_directories(
-    xio-hw-sdk/
-    xio-hw-sdk/cpp-lib
-    xio-hw-sdk/proto/nanopb
-)
-SET(XIO_SDK_LIBRARIES
+SET(MY_LIBRARIES
     pico_stdlib
-    xiohw-cpp-lib
 )
 
 add_subdirectory(${SOURCE_DIR})
 
 # Set up files for the release packages
 install(FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/${SOURCE_DIR}/${XIO_DEVICE_NAME}.uf2
+    ${CMAKE_CURRENT_BINARY_DIR}/${SOURCE_DIR}/${DEVICE_NAME}.uf2
     #${CMAKE_CURRENT_LIST_DIR}/README.md
     DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}
 )

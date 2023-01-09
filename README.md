@@ -15,7 +15,15 @@ Base repository for RP2040 based devices
 
 ### Using VSCode
 
-You can run `env.bat` on the root, which defaults to the build directory and start VSCode at the root directory:
+You can run `env.bat` on the root, which defaults to the build directory.
+
+Run CMake
+
+```
+cmake -G "NMake Makefiles" ..
+```
+
+Now start VSCode at the root directory:
 
 ```
 code ..
